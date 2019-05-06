@@ -83,7 +83,7 @@ class Video extends Component {
   }
 
   onLoadStart() {
-    this.setState({ paused: true, loading: true, currentTime: 0, progress:0 })
+    this.setState({ paused: !this.props.autoPlay, loading: true, currentTime: 0, progress:0 })
   }
 
   onLoad(data) {
@@ -362,7 +362,8 @@ class Video extends Component {
 
     const inline = {
       height: inlineHeight,
-      alignSelf: 'stretch'
+      alignSelf: 'stretch',
+      flex: 1,
     }
 
     const setTheme = {
