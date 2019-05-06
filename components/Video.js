@@ -83,7 +83,7 @@ class Video extends Component {
   }
 
   onLoadStart() {
-    this.setState({ paused: true, loading: true })
+    this.setState({ paused: true, loading: true, currentTime: 0, progress:0 })
   }
 
   onLoad(data) {
@@ -384,7 +384,7 @@ class Video extends Component {
         }
         <VideoPlayer
           {...checkSource(url)}
-          paused={paused}
+          paused={paused || this.props.paused}
           resizeMode={resizeMode}
           ignoreSilentSwitch={ignoreSilentSwitch}
           repeat={loop}
