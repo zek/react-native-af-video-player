@@ -236,6 +236,9 @@ class Video extends Component {
   }
 
   toggleFS() {
+    if(this.props.customFullScreen){
+      return this.props.customFullScreen(this.state.fullScreen);
+    }
     this.setState({ fullScreen: !this.state.fullScreen }, () => {
       Orientation.getOrientation((e, orientation) => {
         if (this.state.fullScreen) {
