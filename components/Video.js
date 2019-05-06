@@ -354,6 +354,7 @@ class Video extends Component {
       playInBackground,
       playWhenInactive,
       controlDuration,
+      ignoreSilentSwitch,
     } = this.props
 
     const inline = {
@@ -385,6 +386,7 @@ class Video extends Component {
           {...checkSource(url)}
           paused={paused}
           resizeMode={resizeMode}
+          ignoreSilentSwitch={ignoreSilentSwitch}
           repeat={loop}
           style={fullScreen ? styles.fullScreen : inline}
           ref={(ref) => { this.player = ref }}
