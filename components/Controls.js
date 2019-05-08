@@ -78,6 +78,8 @@ class Controls extends Component {
   }
 
   showControls() {
+    if (this.props.onControlChange) 
+      this.props.onControlChange(true);
     this.setState({ hideControls: false }, () => {
       this.progressbar.setValue(2)
       Animated.parallel([
@@ -88,6 +90,8 @@ class Controls extends Component {
   }
 
   hideControls() {
+    if (this.props.onControlChange) 
+      this.props.onControlChange(false);
     Animated.parallel([
       Animated.timing(this.animControls, { toValue: 0, duration: 200 }),
       Animated.timing(this.scale, { toValue: 0.25, duration: 200 })
