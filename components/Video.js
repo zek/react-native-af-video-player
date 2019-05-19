@@ -56,7 +56,6 @@ class Video extends Component {
     super(props)
     this.state = {
       paused: !props.autoPlay,
-      muted: false,
       fullScreen: false,
       inlineHeight: Win.width * 0.5625,
       loading: false,
@@ -278,10 +277,6 @@ class Video extends Component {
     ]).start()
   }
 
-  toggleMute() {
-    this.setState({ muted: !this.state.muted })
-  }
-
   seek(percent) {
     const currentTime = percent * this.state.duration
     this.setState({ seeking: true, currentTime })
@@ -332,13 +327,14 @@ class Video extends Component {
     const {
       fullScreen,
       paused,
-      muted,
       loading,
       progress,
       duration,
       inlineHeight,
       currentTime
     } = this.state
+
+    const { muted } = this.props;
 
     const {
       url,
@@ -410,7 +406,7 @@ class Video extends Component {
         <Controls
           ref={(ref) => { this.controls = ref }}
           onControlChange={this.props.onControlChange}
-          toggleMute={() => this.toggleMute()}
+          toggleMute={this.props.toggleMute}
           toggleFS={() => this.toggleFS()}
           togglePlay={() => this.togglePlay()}
           paused={paused}
