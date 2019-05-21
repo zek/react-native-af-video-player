@@ -176,10 +176,10 @@ class Video extends Component {
           type = error
           break
         case typeof error === 'object':
-          type = Alert.alert(error.title, error.message, error.button, error.options)
+          type = error;
           break
         default:
-          type = Alert.alert('Oops!', 'There was an error playing this video, please try again later.', [{ text: 'Close' }])
+          type = error;
           break
       }
       return type
