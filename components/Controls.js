@@ -28,7 +28,7 @@ class Controls extends Component {
   constructor() {
     super()
     this.state = {
-      hideControls: false,
+      hideControls: true,
       seconds: 0,
       seeking: false
     }
